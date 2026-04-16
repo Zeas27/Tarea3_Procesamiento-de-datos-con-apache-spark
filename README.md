@@ -1,10 +1,10 @@
 # Tarea3_Procesamiento-de-datos-con-apache-spark
-Este proyecto implementa un proceso de análisis de datos en batch enfocado en la Tasa Representativa del Mercado (TRM) en Colombia, con el objetivo de comprender su comportamiento a lo largo del tiempo y generar información útil para la toma de decisiones.
+Este proyecto implementa un proceso de análisis de datos en tiempo real enfocado en la Tasa Representativa del Mercado (TRM) en Colombia, con el objetivo de monitorear su comportamiento y generar información útil para la toma de decisiones.
 
-La solución se basa en el uso de Apache Spark (PySpark) como motor de procesamiento distribuido, lo que permite manejar grandes volúmenes de datos de manera eficiente. El proceso inicia con la carga de un conjunto de datos históricos de la TRM, el cual contiene registros diarios del valor del dólar en Colombia.
+La solución se basa en una arquitectura de streaming utilizando Apache Kafka como sistema de mensajería y Apache Spark Structured Streaming como motor de procesamiento distribuido. Los datos son obtenidos desde una API pública de la TRM y enviados continuamente a un tópico de Kafka mediante un productor desarrollado en Python.
 
-Posteriormente, se realiza una etapa de transformación de datos que incluye limpieza, validación de tipos de datos y estructuración de la información para su análisis. Durante esta fase, se aplican operaciones como filtrado, agregaciones y cálculos estadísticos, permitiendo identificar tendencias y patrones relevantes en la evolución de la TRM.
+Posteriormente, un consumidor implementado con Spark Streaming procesa los datos en tiempo real, aplicando transformaciones como parsing de datos JSON, validación de tipos y agregaciones. Este enfoque permite analizar la información de manera continua, identificando patrones y tendencias a medida que los datos son generados.
 
-El procesamiento se ejecuta en modo batch, lo que significa que los datos son procesados en bloques o conjuntos completos en lugar de flujos en tiempo real. Este enfoque es adecuado para el análisis histórico, ya que permite trabajar con grandes volúmenes de información de manera estructurada y reproducible.
+A diferencia del procesamiento batch, esta solución permite una respuesta inmediata a los cambios en la TRM, lo que resulta especialmente útil en escenarios donde la información actualizada es crítica.
 
-Finalmente, los resultados del procesamiento pueden ser visualizados en consola o almacenados para análisis posteriores, facilitando la interpretación de los datos y el soporte en la toma de decisiones económica
+Finalmente, los resultados del procesamiento pueden ser visualizados en consola o integrados con otros sistemas para análisis posteriores, facilitando la toma de decisiones basada en datos en tiempo real.
